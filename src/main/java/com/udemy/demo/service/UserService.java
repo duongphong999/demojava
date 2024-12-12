@@ -37,8 +37,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public List<UserResponse> getUsers() {
+        return userRepository.findAll().stream().map(userMapper::toUserResponse).toList();
     }
 
     public UserResponse getUser(String id) {
